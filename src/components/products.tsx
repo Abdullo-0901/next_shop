@@ -1,18 +1,22 @@
 "use client";
 import { ProductType } from "@/interfaces";
+import Image from "next/image";
 import React, { FC } from "react";
+import CoustomImages from "./images";
+import Link from "next/link";
 
 // eslint-disable-next-line @next/next/no-async-client-component
 const Product: FC<{ product: ProductType }> = async ({ product }) => {
   console.log(product);
 
   return (
-    <div className="bg-gray-100 p-6 rounded-lg">
-      <img
-        className="h-40 rounded w-full object-cover object-center mb-6"
-        src="https://dummyimage.com/721x401"
-        alt="content"
-      />
+    <Link
+      href={`product/${product.id}`}
+      className=" h-96 flex flex-col p-6 rounded-lg border group hover:scale-105 transition-transform ease-in-out duration-200"
+    >
+      <div className="relative max-h-80 flex-1 mb-5">
+        <CoustomImages product={product} />
+      </div>
       <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
         {product.category}
       </h3>
@@ -23,7 +27,7 @@ const Product: FC<{ product: ProductType }> = async ({ product }) => {
       <p className="leading-relaxed text-base line-clamp-2">
         {product.description}
       </p>
-    </div>
+    </Link>
   );
 };
 
