@@ -7,7 +7,6 @@ const Navbar = () => {
     <div className="flex items-center md:px-12 h-[90px] justify-between fixed top-0 w-full z-50 shadow bg-[#ffff]">
       <Link href={"/"}>
         <Image src={"/logo.svg"} alt="logo" width={150} height={140} />
-        <h1 className="text-red-400">hhh</h1>
       </Link>
       <div className="flex items-center">
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
