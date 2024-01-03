@@ -1,14 +1,15 @@
 "use client";
 
+import { ProductType } from "@/interfaces";
 import Image from "next/image";
 import { FC, useState } from "react";
-import book2 from "../../public/book2.jpg";
-import { ProductType } from "@/interfaces";
 interface Props {
   product: ProductType;
   fill?: boolean;
 }
 const CoustomImages: FC<Props> = ({ product, fill }) => {
+  console.log(product);
+
   const [isLoading, setisLoading] = useState<boolean>(true);
   return (
     <Image

@@ -1,9 +1,8 @@
 "use client";
 import { ProductType } from "@/interfaces";
-import Image from "next/image";
-import React, { FC } from "react";
-import CoustomImages from "./images";
 import Link from "next/link";
+import { FC } from "react";
+import CoustomImages from "./images";
 
 // eslint-disable-next-line @next/next/no-async-client-component
 const Product: FC<{ product: ProductType }> = async ({ product }) => {
