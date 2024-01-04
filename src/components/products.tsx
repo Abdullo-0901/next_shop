@@ -5,7 +5,7 @@ import { FC } from "react";
 import CoustomImages from "./images";
 
 // eslint-disable-next-line @next/next/no-async-client-component
-const Product: FC<{ product: ProductType }> = async ({ product }) => {
+const Product: FC<{ product: ProductType }> = ({ product }) => {
   console.log(product);
 
   return (
@@ -14,7 +14,7 @@ const Product: FC<{ product: ProductType }> = async ({ product }) => {
       className=" h-96 flex flex-col p-6 rounded-lg border group hover:scale-105 transition-transform ease-in-out duration-200"
     >
       <div className="relative max-h-80 flex-1 mb-5">
-        <CoustomImages product={product} />
+        <CoustomImages product={product} fill />
       </div>
       <h3 className="tracking-widest text-indigo-500 text-xs font-medium title-font">
         {product.category}

@@ -7,12 +7,34 @@ import { Dialog } from "@headlessui/react";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import ReactStars from "react-stars";
+import { toast } from "react-toastify";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState<boolean>(true);
   const [product, setProduct] = useState<ProductType>();
   const router = useRouter();
+
+  const handleClick = () => {
+    const products: ProductType[] =
+      JSON.parse(localStorage.getItem("carts") as string) || [];
+
+    const existProduct = products.find((c) => c.id === product?.id);
+    if (existProduct) {
+      const updateProduct = products.map((c) => {
+        if (c.id === existProduct?.id) {
+          return { ...c, quantity: c.quantity + 1 };
+        }
+        return c;
+      });
+      localStorage.setItem("carts", JSON.stringify(updateProduct));
+    } else {
+      const data = [...products, { ...product, quantity: 1 }];
+      localStorage.setItem("carts", JSON.stringify(data));
+    }
+    toast("Your product add to bag!!");
+  };
+
   useEffect(() => {
     async function getData() {
       setLoading(true);
@@ -84,7 +106,10 @@ const ProductDetailPage = () => {
                     </p>
                   </div>
                   <div className="space-y-3 text-sm ">
-                    <button className="button w-full bg-blue-600 text-white border-transparent hover:border-blue-600 hover:bg-transparent  hover:text-black ">
+                    <button
+                      onClick={handleClick}
+                      className="button w-full bg-blue-600 text-white border-transparent hover:border-blue-600 hover:bg-transparent  hover:text-black "
+                    >
                       Add to bag
                     </button>
                     <button
