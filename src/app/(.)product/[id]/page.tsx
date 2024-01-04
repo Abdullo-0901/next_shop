@@ -5,9 +5,11 @@ import { Dialog } from "@headlessui/react";
 // import { StarIcon as StartIconOutline } from "@heroicons/react/24/outline";
 // import { StarIcon } from "@heroicons/react/24/solid";
 import { useParams, useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactStars from "react-stars";
+
 import { toast } from "react-toastify";
+
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -64,7 +66,7 @@ const ProductDetailPage = () => {
               <div className="flex gap-x-8 h-96">
                 {product?.image && (
                   <div className="relative w-72 h-full ">
-                    <CoustomImages product={product} />
+                    <CoustomImages product={product} fill />
                   </div>
                 )}
                 <div className="flex flex-1 flex-col">
