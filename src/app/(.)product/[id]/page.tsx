@@ -2,11 +2,11 @@
 import CoustomImages from "@/components/images";
 import { ProductType } from "@/interfaces";
 import { Dialog } from "@headlessui/react";
-import { StarIcon as StartIconOutline } from "@heroicons/react/24/outline";
-import { StarIcon } from "@heroicons/react/24/solid";
+// import { StarIcon as StartIconOutline } from "@heroicons/react/24/outline";
+// import { StarIcon } from "@heroicons/react/24/solid";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-
+import ReactStars from "react-stars";
 const ProductDetailPage = () => {
   const { id } = useParams();
   const [loading, setLoading] = useState(false);
@@ -53,7 +53,7 @@ const ProductDetailPage = () => {
                       <p>{product?.rating.rate}</p>
                       {product?.rating.rate && (
                         <div className="flex items-center ml-2 mr-6">
-                          {Array.from(
+                          {/* {Array.from(
                             { length: Math.floor(product.rating.rate) },
                             (_, i) => (
                               <StarIcon
@@ -70,13 +70,29 @@ const ProductDetailPage = () => {
                                 className="text-yellow-400 h-4 w-4 "
                               />
                             )
-                          )}
+                          )} */}
+
+                          <ReactStars size={22} value={product.rating.rate} />
                         </div>
                       )}
                       <p className="text-blue-600 hover:underline cursor-pointer text-[18px] ">
-                        See all {product?.rating.count}
+                        See all {product?.rating.count} review
                       </p>
                     </div>
+                    <p className="line-clamp-5 text-sm my-2">
+                      {product?.description}
+                    </p>
+                  </div>
+                  <div className="space-y-3 text-sm ">
+                    <button className="button w-full bg-blue-600 text-white border-transparent hover:border-blue-600 hover:bg-transparent  hover:text-black ">
+                      Add to bag
+                    </button>
+                    <button
+                      onClick={() => window.location.reload()}
+                      className="button w-full bg-white  border-blue-600 hover:border-blue-600 hover:bg-blue-600  hover:text-white "
+                    >
+                      View full details
+                    </button>
                   </div>
                 </div>
               </div>
